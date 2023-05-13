@@ -1,7 +1,9 @@
 # GDPS Client
 
 **This is GDPS Client for those, who use my dashboard**
+
 Updater: https://github.com/MegaSa1nt/GDPS-Updater
+
 Dashboard: https://github.com/Cvolton/GMDprivateServer/pull/883
 
 How to build:
