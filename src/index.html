@@ -1,0 +1,98 @@
+<head>
+	<meta charset="utf-8">
+	<title>GDPS Client</title>
+	<script src="script.js"></script>
+	<script src="res/jsz.js"></script>
+	<link async="" rel="stylesheet" href="res/style.css">
+	<link async="" rel="stylesheet" href="res/main.css">
+</head>
+<body oncontextmenu="return false;">
+<div id="stgdiv" class="fillbg" style="opacity:0;visibility:hidden">
+	<div class="loadsvg" style="flex-direction: column;">
+		<button style="left: 12.5;top: 12.5" type="button" title="Close settings" onclick="settings()" class="login"><img class="playicon" width="30px" src="res/svg/x.svg"></button>
+		<h1>Settings</h1>
+		<div id="gdhmsettings" class="settings">
+			<p style="margin-bottom:5px">Download GDPS</p>
+			<div class="radios"><span><input id="gdhmyes" type="radio" name="gdhm" value="1"><text>With GDHM</text></span></input>
+			<span><input type="radio" id="gdhmno" name="gdhm" value="0"><text>Without GDHM</text></input></span></div>
+		</div>
+		<button type="button" class="loginstg" title="Logout" onclick="logoutbtn()"><p>Logout</p><img class="playicon" width="35px" src="res/svg/login.svg"></button>
+	</div>
+	<div class="ver"><h3><b><span id="time">26 october 2006</span></b></h3><h3><b><span id="ver">1.0.0</span></b></h3></div>
+	<span class="loading"></span>
+</div>
+<div id="loaddiv" class="fillbg">
+	<div class="loadsvg">
+		<img class="spin" width="50px" src="res/svg/loading.svg">
+	</div>
+	<span class="loading"></span>
+</div>
+<div id="warndiv" class="fillbg" style="opacity:0;visibility:hidden">
+	<div class="loadsvg warntext" style="flex-direction: column;">
+		<h1>Warning</h1><br>
+		<p><b>Hello!</b></p>
+		<p>Be careful, game will be installed same folder as client</p><br>
+		<p><i>Are you sure you installed it correctly?</i></p><br>
+		<div class="warnbtn"><button type="button" onclick="warning(true)" class="btn-primary btn-success">Yes</button><button type="button" onclick="warning(false)" style="width:70%" class="btn-primary btn-size">No...</button></div>
+	</div>
+	<span class="loading"></span>
+</div>
+<div class="mahbody">
+	<div data-tauri-drag-region class="titlebar">
+	  <div class="titlebar-button" id="titlebar-minimize">
+		<img src="res/svg/min.svg" width="10px" alt="Minimize"/>
+	  </div>
+	  <div class="titlebar-button-close" id="titlebar-close">
+		<img src="res/svg/x.svg" width="10px" alt="Close" />
+	  </div>
+	</div>
+	<button type="button" style="opacity:1;transition:0.3s" title="Login" onclick="show()" id="lbtn" class="login"><img id="licon" class="playicon" width="35px" src="res/svg/login.svg"></button>
+	<div id="div" class="dropdown-menu">
+		<form class="form" id="form" name="login">
+			<p id="ltext" style="padding:5px">Login to account</p>
+			<div class="form-group"><input name="userName" placeholder="Username" class="form-control login-input"></input></div>
+			<div class="form-group"><input type="password" name="password" placeholder="Password" class="form-control login-input"></input></div>
+			<button type="button" onclick="loginbtn()" class="btn-primary">Login</button>
+		</form>
+	</div>
+	<div class="maindiv">
+		<h1>Hello, <text id="user" style="padding:0;font-weight: 900;">guest</text>!</h1>
+		<p id="bruh">Welcome to <text id="gdpsname">GDPS</text>!</p>
+		<h3 id="text"></h3>
+		<div class="prdiv" id="prdiv" style="opacity:0">
+			<div class="prtext"><p class="prp" id="ploaded">0 MB</p><p class="prp" id="ptxt">Downloading...</p><p class="prp" id="pmax">312 MB</p></div>
+			<progress id="progress" style="transition:0.2s" value="100" max="100"></progress>
+		</div>
+		<button id="pbtn" style="border-radius: 500px;" onclick="play()"><div id="playdiv" class="play dl"><img id="pimg" width="100px" src="res/svg/play.svg"></div></button>
+	</div>
+	<script>
+		window.dontupdate = false;
+		const appWindow = window.__TAURI__.window.appWindow;
+		document.getElementById('titlebar-minimize').addEventListener('click', () => appWindow.minimize());
+		document.getElementById('titlebar-close').addEventListener('click', () => appWindow.close());
+		const text = document.getElementById("text");
+		const ltext = document.getElementById("ltext");
+		setTimeout(function(){updateUser();}, 1);
+		setInterval(function(){updateUser()}, 1800000);
+		window.__TAURI__.window.appWindow.setFocus();
+		window.__TAURI__.fs.exists("GDPS-Updater.exe").then((result) => {if(result) window.__TAURI__.fs.removeFile("GDPS-Updater.exe")});
+		document.getElementById("gdhmyes").addEventListener("change", function() {
+			document.cookie = "gdhm=1; path=/; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+		})
+		document.getElementById("gdhmno").addEventListener("change", function() {
+			document.cookie = "gdhm=0; path=/; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+		})
+		cook = [];
+		cookie = document.cookie.split(";");
+		cookie.forEach((penis) => {
+			variable = penis.split("=");
+			cook[variable[0].trim()] = variable[1];
+		});
+		if(cook["gdhm"] == 0) document.getElementById("gdhmno").click();
+		else document.getElementById("gdhmyes").click();
+		tm = timeConverter(cook["client"]);
+		if(tm != "1 january 1970") document.getElementById("time").innerHTML = tm;
+		f = window.__TAURI__.app.getVersion();
+		f.then(e=>{document.getElementById("ver").innerHTML = e})
+	</script>
+</div></body>

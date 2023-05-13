@@ -1,0 +1,108 @@
+{
+  "build": {
+    "beforeDevCommand": "",
+    "beforeBuildCommand": "",
+    "devPath": "../src",
+    "distDir": "../src",
+    "withGlobalTauri": true
+  },
+  "package": {
+    "productName": "GDPS-Client",
+    "version": "1.0.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "shell": {
+        "all": true,
+		"execute": true,
+        "sidecar": true,
+        "open": false
+      },
+	  "notification": {
+        "all": true
+      },
+	  "fs": {
+		"scope": ["**"],
+        "all": true, 
+        "readFile": true,
+        "writeFile": true,
+        "readDir": true,
+        "copyFile": true,
+        "createDir": true,
+        "removeDir": true,
+        "removeFile": true,
+        "renameFile": true,
+        "exists": true
+      },
+	  "path": {
+        "all": true
+      },
+	  "process": {
+        "all": true
+      },
+	  "window": {
+        "all": true, 
+        "create": true, 
+        "center": true,
+        "requestUserAttention": true,
+        "setResizable": true,
+        "setTitle": true,
+        "minimize": true,
+        "unminimize": true,
+        "show": true,
+        "hide": true,
+        "close": true,
+        "setDecorations": true,
+        "setAlwaysOnTop": true,
+        "setSize": true,
+        "setMinSize": true,
+        "setMaxSize": true,
+        "setPosition": true,
+        "setFullscreen": true,
+        "setFocus": true,
+        "setIcon": true,
+        "setSkipTaskbar": true,
+        "setCursorGrab": true,
+        "setCursorVisible": true,
+        "setCursorIcon": true,
+        "setCursorPosition": true,
+        "setIgnoreCursorEvents": true,
+        "startDragging": true,
+        "print": true
+      }
+    },
+    "bundle": {
+      "active": true,
+	  "icon": [
+		"icons/icon.ico"
+	  ],
+	  "shortDescription": "Client for GDPS.",
+	  "longDescription": "Client for GDPS.",
+	  "copyright": "MegaSa1nt",
+	  "publisher": "MegaSa1nt",
+      "identifier": "sa1nt.gdps-client",
+      "targets": "all"
+    },
+    "security": {
+      "csp": null
+    },
+    "updater": {
+      "active": false
+    },
+    "windows": [
+      {
+		"transparent": true,
+        "fullscreen": false,
+        "resizable": false,
+        "title": "GDPS Client",
+        "width": 720,
+        "height": 680,
+		"fileDropEnabled": false,
+		"center": true,
+		"theme": "Dark",
+		"decorations": false
+      }
+    ]
+  }
+}
