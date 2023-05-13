@@ -1,6 +1,7 @@
 # GDPS Client
 
 **This is GDPS Client for those, who use my dashboard**
+https://github.com/MegaSa1nt/GDPS-Updater
 
 How to build:
 1. Install Tauri (https://tauri.app) and its prerequisites (https://tauri.app/v1/guides/getting-started/prerequisites)
