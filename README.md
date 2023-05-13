@@ -1,7 +1,8 @@
 # GDPS Client
 
 **This is GDPS Client for those, who use my dashboard**
-https://github.com/MegaSa1nt/GDPS-Updater
+Updater: https://github.com/MegaSa1nt/GDPS-Updater
+Dashboard: https://github.com/Cvolton/GMDprivateServer/pull/883
 
 How to build:
 1. Install Tauri (https://tauri.app) and its prerequisites (https://tauri.app/v1/guides/getting-started/prerequisites)
