@@ -17,4 +17,4 @@ How to config it:
 3. See first two lines
 4. Config it
 
-It uses JSZip
+**It uses JSZip (https://github.com/Stuk/jszip)**
